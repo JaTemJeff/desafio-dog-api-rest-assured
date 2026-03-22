@@ -1,4 +1,4 @@
-package client;
+package com.jeff.dogapi.client;
 
 import io.restassured.response.Response;
 
