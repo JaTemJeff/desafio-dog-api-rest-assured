@@ -16,6 +16,5 @@ public class BreedsTest {
         breedsStep.todasAsSubRacasDevemSerListas();
         breedsStep.oTempoDeRespostaDeveSerMenorQueSegundos(2);
         breedsStep.aListaDeRacasDeveConterPeloMenosUmItem();
-
     }
 }

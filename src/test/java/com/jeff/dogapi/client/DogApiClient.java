@@ -11,7 +11,12 @@ public class DogApiClient {
     public Response get(String path) {
         return given()
                 .baseUri(BASE_URL)
+                .log().all()
                 .when()
-                .get(path);
+                .get(path)
+                .then()
+                .log().all()
+                .extract()
+                .response();
     }
 }
