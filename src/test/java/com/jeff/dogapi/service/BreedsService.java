@@ -1,4 +1,4 @@
-package com.jeff.dogapi.services;
+package com.jeff.dogapi.service;
 
 import com.jeff.dogapi.utils.PathEnum;
 import io.restassured.response.Response;
