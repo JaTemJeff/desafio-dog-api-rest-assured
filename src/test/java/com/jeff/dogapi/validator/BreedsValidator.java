@@ -63,7 +63,6 @@ public class BreedsValidator {
                     .as("URL inválida: %s", url)
                     .startsWith("https://")
                     .containsAnyOf(".jpg", ".png", ".jpeg");
-            assertThat(url).containsAnyOf(".jpg", ".png", ".jpeg");
         });
     }
 
@@ -71,22 +70,15 @@ public class BreedsValidator {
         String image = response.jsonPath().getString("message");
 
         assertThat(image).isNotNull();
-        assertThat(isValidUrl(image)).isTrue();
-        assertThat(image).containsAnyOf(".jpg", ".png", ".jpeg");
+        assertThat(image)
+                .as("URL inválida: %s", image)
+                .startsWith("https://")
+                .containsAnyOf(".jpg", ".png", ".jpeg");
     }
 
     public void validateImageListNotEmpty(Response response) {
         List<String> images = response.jsonPath().getList("message");
 
         assertThat(images).isNotNull().isNotEmpty();
-    }
-
-    private boolean isValidUrl(String url) {
-        try {
-            new URL(url);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
     }
 }

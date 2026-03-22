@@ -11,7 +11,8 @@ public class DogApiClient {
     public Response get(String path) {
         return given()
                 .baseUri(BASE_URL)
-                .log().all()
+                .log().method()
+                .log().uri()
                 .when()
                 .get(path)
                 .then()
@@ -19,4 +20,5 @@ public class DogApiClient {
                 .extract()
                 .response();
     }
+
 }
