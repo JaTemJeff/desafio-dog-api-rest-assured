@@ -1,17 +1,10 @@
 package com.jeff.dogapi.steps;
 
-import com.jeff.dogapi.service.BreedsService;
-import com.jeff.dogapi.validator.BreedsValidator;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.response.Response;
 
-public class BreedsStep {
-
-    private BreedsValidator breedsValidator = new BreedsValidator();
-    private BreedsService breedsService = new BreedsService();
-    private Response response;
+public class BreedsStep extends BaseStep {
 
     @When("enviar uma requisição GET para listar todas as raças")
     public void enviarUmaRequisicaoGETParaListarTodasAsRacas() {
