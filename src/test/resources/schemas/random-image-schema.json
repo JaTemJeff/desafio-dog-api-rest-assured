@@ -2,13 +2,8 @@
   "type": "object",
   "properties": {
     "message": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
-      }
+      "type": "string",
+      "format": "uri"
     },
     "status": {
       "type": "string",

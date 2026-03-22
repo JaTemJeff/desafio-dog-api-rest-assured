@@ -9,8 +9,13 @@
     },
     "status": {
       "type": "string",
-      "enum": ["success"]
+      "enum": [
+        "success"
+      ]
     }
   },
-  "required": ["message", "status"]
+  "required": [
+    "message",
+    "status"
+  ]
 }

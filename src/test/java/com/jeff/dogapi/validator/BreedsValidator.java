@@ -4,6 +4,7 @@ import io.restassured.response.Response;
 
 import java.util.List;
 import java.util.Map;
+import java.net.URL;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -52,5 +53,40 @@ public class BreedsValidator {
         assertThat(breeds).isNotEmpty();
     }
 
+    public void validateImageUrls(Response response) {
+        List<String> images = response.jsonPath().getList("message");
 
+        assertThat(images).isNotEmpty();
+
+        images.forEach(url -> {
+            assertThat(url)
+                    .as("URL inválida: %s", url)
+                    .startsWith("https://")
+                    .containsAnyOf(".jpg", ".png", ".jpeg");
+            assertThat(url).containsAnyOf(".jpg", ".png", ".jpeg");
+        });
+    }
+
+    public void validateSingleImageUrl(Response response) {
+        String image = response.jsonPath().getString("message");
+
+        assertThat(image).isNotNull();
+        assertThat(isValidUrl(image)).isTrue();
+        assertThat(image).containsAnyOf(".jpg", ".png", ".jpeg");
+    }
+
+    public void validateImageListNotEmpty(Response response) {
+        List<String> images = response.jsonPath().getList("message");
+
+        assertThat(images).isNotNull().isNotEmpty();
+    }
+
+    private boolean isValidUrl(String url) {
+        try {
+            new URL(url);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

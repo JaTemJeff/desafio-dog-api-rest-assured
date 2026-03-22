@@ -1,20 +1,20 @@
 package com.jeff.dogapi.tests;
 
-import com.jeff.dogapi.steps.BreedsStep;
+import com.jeff.dogapi.steps.BreedsSteps;
 import org.junit.jupiter.api.Test;
 
 public class BreedsTest {
-    private BreedsStep breedsStep = new BreedsStep();
+    private BreedsSteps breedsSteps = new BreedsSteps();
 
     @Test
     public void listarTodasAsRacasDeCachorro() {
-        breedsStep.enviarUmaRequisicaoGETParaListarTodasAsRacas();
-        breedsStep.deveRetornarStatusCode(200);
-        breedsStep.aRespostaDeveConterOStatus("");
-        breedsStep.aRespostaDeveSeguirOContratoDefinido();
-        breedsStep.osNomesDasRacasDevemEstarEmMinusculas();
-        breedsStep.todasAsSubRacasDevemSerListas();
-        breedsStep.oTempoDeRespostaDeveSerMenorQueSegundos(2);
-        breedsStep.aListaDeRacasDeveConterPeloMenosUmItem();
+        breedsSteps.enviarUmaRequisicaoGETParaListarTodasAsRacas();
+        breedsSteps.deveRetornarStatusCode(200);
+        breedsSteps.aRespostaDeveConterOStatus("");
+        breedsSteps.aRespostaDeveSeguirOContratoDefinido("schemas/breeds-schema.json");
+        breedsSteps.osNomesDasRacasDevemEstarEmMinusculas();
+        breedsSteps.todasAsSubRacasDevemSerListas();
+        breedsSteps.oTempoDeRespostaDeveSerMenorQueSegundos(2);
+        breedsSteps.aListaDeRacasDeveConterPeloMenosUmItem();
     }
 }

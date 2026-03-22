@@ -10,7 +10,7 @@ public class BreedsService extends BaseService {
     }
 
     public Response getImagesByBreed(String breed) {
-        return dogApiClient.get(PathEnum.GET_BY_BREEDS.withParam(breed));
+        return dogApiClient.get(PathEnum.GET_IMAGES_BY_BREED.withParam(breed));
     }
 
     public Response getRandomImage() {
