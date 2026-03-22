@@ -8,4 +8,13 @@ public class BreedsService extends BaseService {
     public Response listAllBreeds() {
         return dogApiClient.get(PathEnum.GET_ALL_BREEDS.getPath());
     }
+
+    public Response getImagesByBreed(String breed) {
+        return dogApiClient.get(PathEnum.GET_BY_BREEDS.withParam(breed));
+    }
+
+    public Response getRandomImage() {
+        return dogApiClient.get(PathEnum.GET_RANDOM_IMAGE.getPath());
+    }
+
 }
