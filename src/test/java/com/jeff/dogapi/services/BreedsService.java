@@ -1,2 +1,11 @@
-package com.jeff.dogapi.services;public class BreedsService {
+package com.jeff.dogapi.services;
+
+import com.jeff.dogapi.utils.PathEnum;
+import io.restassured.response.Response;
+
+public class BreedsService extends BaseService {
+
+    public Response listAllBreeds() {
+        return dogApiClient.get(PathEnum.GET_ALL_BREEDS.getPath());
+    }
 }
