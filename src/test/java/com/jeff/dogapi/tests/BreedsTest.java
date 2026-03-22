@@ -13,13 +13,8 @@ public class BreedsTest {
     @Test
     void shouldListAllBreedsSuccessfully() {
 
-        // Arrange
-        // (nenhum dado necessário)
-
-        // Act
         Response response = breedsService.listAllBreeds();
 
-        // Assert
         validator.validateStatus(response, 200);
         validator.validateResponseStatus(response, "success");
         validator.validateSchema(response, "schemas/breeds-schema.json");

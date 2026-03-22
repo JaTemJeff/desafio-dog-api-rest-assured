@@ -13,13 +13,11 @@ public class ImagesTest {
     @Test
     void shouldListImagesByBreedSuccessfully() {
 
-        // Arrange
+
         String breed = "akita";
 
-        // Act
         Response response = imagesService.getImagesByBreed(breed);
 
-        // Assert
         validator.validateStatus(response, 200);
         validator.validateResponseStatus(response, "success");
         validator.validateSchema(response, "schemas/breed-images-schema.json");
@@ -31,13 +29,10 @@ public class ImagesTest {
     @Test
     void shouldReturnErrorForInvalidBreed() {
 
-        // Arrange
         String breed = "nao_existe";
 
-        // Act
         Response response = imagesService.getImagesByBreed(breed);
 
-        // Assert
         validator.validateStatus(response, 404);
         validator.validateResponseStatus(response, "error");
     }
@@ -45,13 +40,8 @@ public class ImagesTest {
     @Test
     void shouldReturnRandomImageSuccessfully() {
 
-        // Arrange
-        // sem dados
-
-        // Act
         Response response = imagesService.getRandomImage();
 
-        // Assert
         validator.validateStatus(response, 200);
         validator.validateResponseStatus(response, "success");
         validator.validateSchema(response, "schemas/random-image-schema.json");
