@@ -2,11 +2,15 @@ package com.jeff.dogapi.tests;
 
 import com.jeff.dogapi.service.BreedsService;
 import com.jeff.dogapi.validator.BreedsValidator;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
-@DisplayName("Breeds API - Deve listar todas as raças de cachorro")
+@Epic("AAA")
+@Feature("Breeds")
+@DisplayName("Testes de raças de cães")
 public class BreedsTest {
 
     private final BreedsService breedsService = new BreedsService();

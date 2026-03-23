@@ -2,11 +2,16 @@ package com.jeff.dogapi.tests;
 
 import com.jeff.dogapi.service.ImagesService;
 import com.jeff.dogapi.validator.BreedsValidator;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Images API - Deve listar imagens por raça ou aleatória")
+@Epic("AAA")
+@Feature("Images")
+@DisplayName("Testes de imagens de cães")
 public class ImagesTest {
 
     private final ImagesService imagesService = new ImagesService();

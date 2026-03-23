@@ -1,8 +1,8 @@
-@all @breeds @smoke @contract
-Feature: Breeds API- Deve listar todas as raças de cães
+@smoke @contract @breeds
+Feature: BDD - Breeds
 
   @list-all-breeds
-  Scenario: Listar todas as raças de cachorro com sucesso
+  Scenario: Deve listar todas as raças de cachorro com sucesso
     When enviar uma requisição GET para listar todas as raças
     Then deve retornar status code 200
     And a resposta deve conter o status "success"

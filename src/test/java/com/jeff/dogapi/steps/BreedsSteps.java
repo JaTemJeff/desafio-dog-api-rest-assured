@@ -4,12 +4,9 @@ import com.jeff.dogapi.context.TestContext;
 import com.jeff.dogapi.service.BreedsService;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
 
-@Feature("Breeds API")
-@Story("Listar todas as raças")
 public class BreedsSteps extends BaseStep {
+
     private final BreedsService breedsService = new BreedsService();
 
     public BreedsSteps(TestContext context) {
