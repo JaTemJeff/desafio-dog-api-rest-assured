@@ -1,0 +1,7 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"","BDD - Images","Deve retornar erro ao buscar imagens de uma raça inválida","0","0","1","0","0"
+"","BDD - Images","Deve listar imagens de uma raça específica com sucesso","0","0","2","0","0"
+"","BDD - Images","Deve retornar uma imagem aleatória de cachorro com sucesso","0","0","1","0","0"
+"AAA","Breeds","","0","0","1","0","0"
+"AAA","Images","","0","0","3","0","0"
+"","BDD - Breeds","Deve listar todas as raças de cachorro com sucesso","0","0","1","0","0"
