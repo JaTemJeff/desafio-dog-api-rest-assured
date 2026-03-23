@@ -1,0 +1,14 @@
+package com.jeff.dogapi.service;
+
+import com.jeff.dogapi.utils.PathEnum;
+import io.restassured.response.Response;
+
+public class ImagesService extends BaseService{
+    public Response getImagesByBreed(String breed) {
+        return dogApiClient.get(PathEnum.GET_IMAGES_BY_BREED.withParam(breed));
+    }
+
+    public Response getRandomImage() {
+        return dogApiClient.get(PathEnum.GET_RANDOM_IMAGE.getPath());
+    }
+}
