@@ -8,7 +8,7 @@ Projeto de automação de testes para a API pública [Dog API](https://dog.ceo/d
 
 Validar o comportamento da API de forma robusta, garantindo:
 
-- Contract testing (validação de schema)
+- Contract testing (validação de schema JSON)
 - Regras de negócio
 - Performance básica
 - Estrutura dos dados retornados
@@ -79,19 +79,19 @@ src
 │            → Contratos JSON para validação (Contract Testing)
 ```
 
-## 🔄 Fluxo dos Testes
+## 🔄 Fluxo de Execução dos Testes
 
-    Feature (BDD)
-    ↓
-    Steps (Cucumber)
-    ↓
-    Service
-    ↓
-    Client (HTTP Request)
-    ↓
-    Response
-    ↓
-    Validator (Assertions + Schema)
+Feature (BDD)  
+↓  
+Steps (Cucumber)  
+↓  
+Service  
+↓  
+Client (HTTP Request)  
+↓  
+Response  
+↓  
+Validator (Assertions + Schema)
 
 ---
 ## 🧠 Estratégia e Plano de Teste
@@ -183,21 +183,45 @@ TestRunner.java
 ```
 
 ---
+### 🔹 Executar via Pacote ou Classes
 
-## 📊 Relatório
+Os testes podem ser executados diretamente pela IDE (ex: IntelliJ), clicando com o botão direito sobre a classe ou pacote desejado.
 
-Após execução:
+#### ✔ Execução via testes programáticos (AAA)
 
+Local:
 ```
-target/cucumber-report.html
+src/test/java/com/jeff/dogapi/tests
+```
+
+Classes:
+```
+BreedsTest.java  
+ImagesTest.java
 ```
 
 ---
 
-## 🔍 Logs
+#### ✔ Execução via BDD (Cucumber)
 
-- Request: method + URI
-- Response: response message
+Local:
+```
+src/test/resources/features
+```
+
+Arquivos:
+```
+Breeds.feature  
+Images.feature
+```
+
+---
+
+💡 Também é possível executar:
+
+- Diretamente pela **classe de teste**
+- Pelo **pacote completo**
+- Ou via **runner do Cucumber**
 
 ---
 
@@ -211,6 +235,40 @@ target/cucumber-report.html
 - BDD com linguagem clara
 - Uso do padrão AAA (Arrange, Act, Assert) em testes JUnit
     
+---
+
+## 🚀 CI/CD e Observabilidade
+
+O projeto utiliza **GitHub Actions** para execução automática dos testes a cada push e pull request.
+
+### ⚙️ Pipeline
+
+- Execução automatizada via Maven (`mvn clean test`)
+- Configuração com Java 21
+- Cache de dependências para otimizar tempo de execução
+- Execução em múltiplos cenários (BDD + AAA)
+
+---
+
+### 📊 Relatórios com Allure
+
+Os testes geram relatórios utilizando o **Allure Report**, proporcionando uma visualização rica e detalhada:
+
+- Status dos cenários (pass/fail)
+- Detalhamento de steps
+- Logs de requisição e resposta (RestAssured)
+- Estrutura organizada para análise de falhas
+
+Os relatórios são gerados durante a pipeline e disponibilizados como artefatos no GitHub Actions.
+
+---
+
+### 🧠 Benefícios
+
+- Feedback rápido sobre falhas
+- Melhor análise de erros
+- Visibilidade clara da execução dos testes
+- Padrão utilizado em ambientes profissionais
 ---
 
 ## 👨‍💻 Autor

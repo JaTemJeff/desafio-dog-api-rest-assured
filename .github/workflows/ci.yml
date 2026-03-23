@@ -5,8 +5,7 @@ on:
     branches:
       - '**'
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -14,16 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configurar Java 21
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Cache do Maven
+      - name: Cache Maven
         uses: actions/cache@v4
         with:
           path: ~/.m2
@@ -31,12 +30,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Rodar testes
-        run: mvn clean test
+      - name: Run tests (AAA + Cucumber)
+        run: mvn clean test -Dtest=TestRunner,**/*Test
 
-      - name: Upload do relatório
+      - name: Generate Allure Report
+        run: mvn allure:report
+
+      - name: Upload Allure Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cucumber-report
-          path: target/cucumber-report.html
+          name: allure-report
+          path: target/site/allure-maven-plugin

@@ -3,6 +3,7 @@ package com.jeff.dogapi.client;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
+import io.qameta.allure.restassured.AllureRestAssured;
 
 public class DogApiClient {
 
@@ -10,6 +11,7 @@ public class DogApiClient {
 
     public Response get(String path) {
         return given()
+                .filter(new AllureRestAssured())
                 .baseUri(BASE_URL)
                 .log().method()
                 .log().uri()
