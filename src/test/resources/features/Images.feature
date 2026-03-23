@@ -1,5 +1,5 @@
 @all @images @smoke @contract
-Feature: Get images - Deve listar uma imagem por raça ou aleatória
+Feature: Images API - Deve listar uma imagem por raça ou aleatória
 
   @get-image-by-breed
   Scenario Outline: Deve listar imagens de uma raça específica com sucesso

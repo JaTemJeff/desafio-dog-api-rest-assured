@@ -1,5 +1,5 @@
 @all @breeds @smoke @contract
-Feature: List all breeds - Deve listar todas as raças de cães
+Feature: Breeds API- Deve listar todas as raças de cães
 
   @list-all-breeds
   Scenario: Listar todas as raças de cachorro com sucesso
