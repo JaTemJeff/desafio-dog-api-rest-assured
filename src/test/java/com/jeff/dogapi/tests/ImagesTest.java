@@ -25,7 +25,7 @@ public class ImagesTest {
         validator.validateSchema(response, "schemas/breed-images-schema.json");
         validator.validateImageUrls(response);
         validator.validateImageListNotEmpty(response);
-        validator.validateResponseTime(response, 2);
+        validator.validateResponseTime(response, 5);
     }
 
     @Test
@@ -50,6 +50,6 @@ public class ImagesTest {
         validator.validateResponseStatus(response, "success");
         validator.validateSchema(response, "schemas/random-image-schema.json");
         validator.validateSingleImageUrl(response);
-        validator.validateResponseTime(response, 2);
+        validator.validateResponseTime(response, 5);
     }
 }

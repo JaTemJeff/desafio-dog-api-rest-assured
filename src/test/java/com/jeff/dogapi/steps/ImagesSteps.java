@@ -5,7 +5,11 @@ import com.jeff.dogapi.service.ImagesService;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 
+@Feature("Images API")
+@Story("Buscar imagens por raça e aleatória")
 public class ImagesSteps extends BaseStep {
 
     private final ImagesService imagesService = new ImagesService();

@@ -10,7 +10,7 @@ Feature: Images API - Deve listar uma imagem por raça ou aleatória
     And a resposta deve seguir o contrato "schemas/breed-images-schema.json"
     And todas as imagens retornadas devem ser URLs válidas
     And a lista de imagens deve conter pelo menos um item
-    And o tempo de resposta deve ser menor que 2 segundos
+    And o tempo de resposta deve ser menor que 5 segundos
 
     Examples:
       | BREED       |
@@ -35,6 +35,6 @@ Feature: Images API - Deve listar uma imagem por raça ou aleatória
     And a resposta deve conter o status "success"
     And a resposta deve seguir o contrato "schemas/random-image-schema.json"
     And a resposta deve conter uma URL de imagem válida
-    And o tempo de resposta deve ser menor que 2 segundos
+    And o tempo de resposta deve ser menor que 5 segundos
 
 

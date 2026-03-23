@@ -1,4 +1,5 @@
 # 🐶 Dog API Test Automation
+![CI](https://github.com/JaTemJeff/desafio-dog-api-rest-assured/actions/workflows/ci.yml/badge.svg)
 
 Projeto de automação de testes para a API pública [Dog API](https://dog.ceo/dog-api/), utilizando **Java + RestAssured + Cucumber (BDD)**, com foco em boas práticas, arquitetura e qualidade de testes.
 

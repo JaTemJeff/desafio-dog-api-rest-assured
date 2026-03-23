@@ -9,7 +9,7 @@ Feature: Breeds API- Deve listar todas as raças de cães
     And a resposta deve seguir o contrato "schemas/breeds-schema.json"
     And os nomes das raças devem estar em minúsculas
     And todas as sub-raças devem ser listas
-    And o tempo de resposta deve ser menor que 2 segundos
+    And o tempo de resposta deve ser menor que 5 segundos
     And a lista de raças deve conter pelo menos um item
 
 

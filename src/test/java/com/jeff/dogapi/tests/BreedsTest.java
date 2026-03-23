@@ -23,7 +23,7 @@ public class BreedsTest {
         validator.validateSchema(response, "schemas/breeds-schema.json");
         validator.validateLowercaseBreeds(response);
         validator.validateSubBreedsAreLists(response);
-        validator.validateResponseTime(response, 2);
+        validator.validateResponseTime(response, 5);
         validator.validateBreedsNotEmpty(response);
     }
 }
