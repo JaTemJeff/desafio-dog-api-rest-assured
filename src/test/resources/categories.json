@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Falhas de Contrato (Schema)",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*doesn't match.*schema.*"
+  },
+  {
+    "name": "Timeout de Resposta",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*expected.*less than.*"
+  },
+  {
+    "name": "Falhas de API (Status Code)",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*expected status code.*"
+  },
+  {
+    "name": "Falhas de Validação de URL",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*URL inválida.*|.*extensão de imagem.*"
+  }
+]

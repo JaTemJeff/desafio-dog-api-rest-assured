@@ -1,4 +1,4 @@
-@smoke @contract @breeds
+@smoke @contract @breeds @epic:BDD
 Feature: BDD - Breeds
 
   @list-all-breeds

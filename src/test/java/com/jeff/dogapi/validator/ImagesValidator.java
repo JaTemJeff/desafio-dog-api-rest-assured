@@ -1,5 +1,6 @@
 package com.jeff.dogapi.validator;
 
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
 import java.net.URI;
@@ -9,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ImagesValidator {
 
+    @Step("Validar que todas as URLs de imagens são válidas")
     public void validateImageUrls(Response response) {
         List<String> images = response.jsonPath().getList("message");
 
@@ -26,6 +28,7 @@ public class ImagesValidator {
         });
     }
 
+    @Step("Validar que a URL da imagem aleatória é válida")
     public void validateSingleImageUrl(Response response) {
         String image = response.jsonPath().getString("message");
 
@@ -40,6 +43,7 @@ public class ImagesValidator {
                 .matches(".*\\.(jpg|jpeg|png)$");
     }
 
+    @Step("Validar que a lista de imagens não está vazia")
     public void validateImageListNotEmpty(Response response) {
         List<String> images = response.jsonPath().getList("message");
 
