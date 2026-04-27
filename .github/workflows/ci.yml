@@ -33,6 +33,12 @@ jobs:
       - name: Run tests (AAA + Cucumber)
         run: mvn clean test -Dtest=RunCucumberTest,**/*Test
 
+      - name: Copy Allure environment and categories
+        if: always()
+        run: |
+          cp src/test/resources/environment.properties target/allure-results/ || true
+          cp src/test/resources/categories.json target/allure-results/ || true
+
       - name: Generate Allure Report
         run: mvn allure:report
 
