@@ -22,26 +22,26 @@ public class ImagesSteps extends BaseStep {
 
     @When("enviar uma requisição GET para listar uma imagem por raça")
     public void enviarUmaRequisicaoGETParaListarUmaImagemPorRaca() {
-        context.response = imagesService.getImagesByBreed(this.breed);
+        context.setResponse(imagesService.getImagesByBreed(this.breed));
     }
 
     @And("todas as imagens retornadas devem ser URLs válidas")
     public void todasAsImagensRetornadasDevemSerURLsValidas() {
-        breedsValidator.validateImageUrls(context.response);
+        imagesValidator.validateImageUrls(context.getResponse());
     }
 
     @And("a lista de imagens deve conter pelo menos um item")
     public void aListaDeImagensDeveConterPeloMenosUmItem() {
-        breedsValidator.validateImageListNotEmpty(context.response);
+        imagesValidator.validateImageListNotEmpty(context.getResponse());
     }
 
     @When("enviar uma requisição GET para listar uma imagem aleatória")
     public void enviarUmaRequisicaoGETParaListarUmaImagemAleatoria() {
-        context.response = imagesService.getRandomImage();
+        context.setResponse(imagesService.getRandomImage());
     }
 
     @And("a resposta deve conter uma URL de imagem válida")
     public void aRespostaDeveConterUmaURLDeImagemValida() {
-        breedsValidator.validateSingleImageUrl(context.response);
+        imagesValidator.validateSingleImageUrl(context.getResponse());
     }
 }

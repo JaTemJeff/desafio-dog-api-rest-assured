@@ -60,7 +60,7 @@ src
 │   │   │        → Compartilha estado entre os steps
 │   │
 │   │   ├── runner
-│   │   │   └── TestRunner
+│   │   │   └── RunCucumberTest
 │   │   │        → Configuração e execução dos testes BDD
 │   │
 │   │   ├── tests
@@ -132,7 +132,7 @@ Validar o comportamento da Dog API garantindo respostas corretas em termos de st
 - Campo `status` com valor esperado (`success` ou `error`)
 - Estrutura da resposta conforme schema
 - Dados válidos (ex: URLs de imagem)
-- Tempo de resposta menor que 2 segundos
+- Tempo de resposta menor que 5 segundos
 
 ---
 
@@ -180,7 +180,7 @@ mvn test
 Classe:
 
 ```
-TestRunner.java
+RunCucumberTest.java
 ```
 
 ---

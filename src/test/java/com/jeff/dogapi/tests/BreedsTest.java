@@ -2,8 +2,10 @@ package com.jeff.dogapi.tests;
 
 import com.jeff.dogapi.service.BreedsService;
 import com.jeff.dogapi.validator.BreedsValidator;
+import com.jeff.dogapi.validator.CommonValidator;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -14,20 +16,22 @@ import org.junit.jupiter.api.DisplayName;
 public class BreedsTest {
 
     private final BreedsService breedsService = new BreedsService();
-    private final BreedsValidator validator = new BreedsValidator();
+    private final CommonValidator commonValidator = new CommonValidator();
+    private final BreedsValidator breedsValidator = new BreedsValidator();
 
     @Test
+    @Story("Listar todas as raças")
     @DisplayName("Deve listar todas as raças de cachorro com sucesso")
     void shouldListAllBreedsSuccessfully() {
 
         Response response = breedsService.listAllBreeds();
 
-        validator.validateStatus(response, 200);
-        validator.validateResponseStatus(response, "success");
-        validator.validateSchema(response, "schemas/breeds-schema.json");
-        validator.validateLowercaseBreeds(response);
-        validator.validateSubBreedsAreLists(response);
-        validator.validateResponseTime(response, 5);
-        validator.validateBreedsNotEmpty(response);
+        commonValidator.validateStatus(response, 200);
+        commonValidator.validateResponseStatus(response, "success");
+        commonValidator.validateSchema(response, "schemas/breeds-schema.json");
+        breedsValidator.validateLowercaseBreeds(response);
+        breedsValidator.validateSubBreedsAreLists(response);
+        commonValidator.validateResponseTime(response, 5);
+        breedsValidator.validateBreedsNotEmpty(response);
     }
 }
