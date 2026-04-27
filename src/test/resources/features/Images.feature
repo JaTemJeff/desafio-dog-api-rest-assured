@@ -1,4 +1,4 @@
-@smoke @contract @images
+@smoke @contract @images @epic:BDD
 Feature: BDD - Images
 
   @get-image-by-breed

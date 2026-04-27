@@ -3,15 +3,15 @@ package com.jeff.dogapi.tests;
 import com.jeff.dogapi.service.BreedsService;
 import com.jeff.dogapi.validator.BreedsValidator;
 import com.jeff.dogapi.validator.CommonValidator;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
-@Epic("AAA")
+@Epic("AAA - Testes Programáticos")
 @Feature("Breeds")
+@Owner("Jeff")
+@Link(name = "Dog API - Breeds", url = "https://dog.ceo/dog-api/documentation")
 @DisplayName("Testes de raças de cães")
 public class BreedsTest {
 
@@ -21,6 +21,9 @@ public class BreedsTest {
 
     @Test
     @Story("Listar todas as raças")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Valida que o endpoint /breeds/list/all retorna todas as raças em lowercase, "
+            + "com sub-raças como listas, dentro do tempo limite e conforme o schema definido.")
     @DisplayName("Deve listar todas as raças de cachorro com sucesso")
     void shouldListAllBreedsSuccessfully() {
 

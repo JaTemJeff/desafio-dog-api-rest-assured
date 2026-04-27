@@ -3,15 +3,15 @@ package com.jeff.dogapi.tests;
 import com.jeff.dogapi.service.ImagesService;
 import com.jeff.dogapi.validator.CommonValidator;
 import com.jeff.dogapi.validator.ImagesValidator;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@Epic("AAA")
+@Epic("AAA - Testes Programáticos")
 @Feature("Images")
+@Owner("Jeff")
+@Link(name = "Dog API - Images", url = "https://dog.ceo/dog-api/documentation")
 @DisplayName("Testes de imagens de cães")
 public class ImagesTest {
 
@@ -21,6 +21,9 @@ public class ImagesTest {
 
     @Test
     @Story("Listar imagens por raça")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Valida que o endpoint /breed/{breed}/images retorna uma lista de URLs de imagens válidas, "
+            + "não vazia, dentro do tempo limite e conforme o schema definido.")
     @DisplayName("Deve listar imagens de acordo com a raça do cachorro")
     void shouldListImagesByBreedSuccessfully() {
 
@@ -38,6 +41,9 @@ public class ImagesTest {
 
     @Test
     @Story("Raça inválida")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Valida que o endpoint /breed/{breed}/images retorna status 404 e status 'error' "
+            + "quando uma raça inexistente é informada.")
     @DisplayName("Deve retornar erro ao tentar listar uma raça inválida")
     void shouldReturnErrorForInvalidBreed() {
 
@@ -51,6 +57,9 @@ public class ImagesTest {
 
     @Test
     @Story("Imagem aleatória")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Valida que o endpoint /breeds/image/random retorna uma URL de imagem válida, "
+            + "dentro do tempo limite e conforme o schema definido.")
     @DisplayName("Deve listar imagem aleatória da raça do cachorro")
     void shouldReturnRandomImageSuccessfully() {
 
