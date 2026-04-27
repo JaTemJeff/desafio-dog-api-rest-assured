@@ -4,28 +4,10 @@ import io.restassured.response.Response;
 
 import java.util.List;
 import java.util.Map;
-import java.net.URL;
 
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.*;
 
 public class BreedsValidator {
-
-    public void validateStatus(Response response, int statusCode) {
-        response.then().statusCode(statusCode);
-    }
-
-    public void validateResponseStatus(Response response, String expectedStatus) {
-        response.then()
-                .body("status", notNullValue())
-                .body("status", equalTo(expectedStatus));
-    }
-
-    public void validateSchema(Response response, String schemaPath) {
-        response.then()
-                .body(matchesJsonSchemaInClasspath(schemaPath));
-    }
 
     public void validateLowercaseBreeds(Response response) {
         Map<String, List<String>> breeds = response.jsonPath().getMap("message");
@@ -38,47 +20,15 @@ public class BreedsValidator {
     public void validateSubBreedsAreLists(Response response) {
         Map<String, List<String>> breeds = response.jsonPath().getMap("message");
 
-        breeds.values().forEach(subBreeds ->
-                assertThat(subBreeds).isNotNull()
-        );
-    }
-
-    public void validateResponseTime(Response response, int timeoutSeconds) {
-        response.then().time(lessThan(timeoutSeconds * 1000L));
+        breeds.values().forEach(subBreeds -> {
+            assertThat(subBreeds).isNotNull();
+            assertThat(subBreeds).isInstanceOf(List.class);
+        });
     }
 
     public void validateBreedsNotEmpty(Response response) {
         Map<String, List<String>> breeds = response.jsonPath().getMap("message");
 
         assertThat(breeds).isNotEmpty();
-    }
-
-    public void validateImageUrls(Response response) {
-        List<String> images = response.jsonPath().getList("message");
-
-        assertThat(images).isNotEmpty();
-
-        images.forEach(url -> {
-            assertThat(url)
-                    .as("URL inválida: %s", url)
-                    .startsWith("https://")
-                    .containsAnyOf(".jpg", ".png", ".jpeg");
-        });
-    }
-
-    public void validateSingleImageUrl(Response response) {
-        String image = response.jsonPath().getString("message");
-
-        assertThat(image).isNotNull();
-        assertThat(image)
-                .as("URL inválida: %s", image)
-                .startsWith("https://")
-                .containsAnyOf(".jpg", ".png", ".jpeg");
-    }
-
-    public void validateImageListNotEmpty(Response response) {
-        List<String> images = response.jsonPath().getList("message");
-
-        assertThat(images).isNotNull().isNotEmpty();
     }
 }

@@ -12,4 +12,10 @@ Feature: BDD - Breeds
     And o tempo de resposta deve ser menor que 5 segundos
     And a lista de raças deve conter pelo menos um item
 
+  @list-all-breeds-negative
+  Scenario: Deve retornar erro ao acessar endpoint de raças inválido
+    When enviar uma requisição GET para um endpoint de raças inválido
+    Then deve retornar status code 404
+    And a resposta deve conter o status "error"
+
 

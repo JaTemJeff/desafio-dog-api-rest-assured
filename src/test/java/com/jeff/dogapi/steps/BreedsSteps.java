@@ -15,21 +15,26 @@ public class BreedsSteps extends BaseStep {
 
     @When("enviar uma requisição GET para listar todas as raças")
     public void enviarUmaRequisicaoGETParaListarTodasAsRacas() {
-        context.response = breedsService.listAllBreeds();
+        context.setResponse(breedsService.listAllBreeds());
     }
 
     @And("os nomes das raças devem estar em minúsculas")
     public void osNomesDasRacasDevemEstarEmMinusculas() {
-        breedsValidator.validateLowercaseBreeds(context.response);
+        breedsValidator.validateLowercaseBreeds(context.getResponse());
     }
 
     @And("todas as sub-raças devem ser listas")
     public void todasAsSubRacasDevemSerListas() {
-        breedsValidator.validateSubBreedsAreLists(context.response);
+        breedsValidator.validateSubBreedsAreLists(context.getResponse());
     }
 
     @And("a lista de raças deve conter pelo menos um item")
     public void aListaDeRacasDeveConterPeloMenosUmItem() {
-        breedsValidator.validateBreedsNotEmpty(context.response);
+        breedsValidator.validateBreedsNotEmpty(context.getResponse());
+    }
+
+    @When("enviar uma requisição GET para um endpoint de raças inválido")
+    public void enviarUmaRequisicaoGETParaUmEndpointDeRacasInvalido() {
+        context.setResponse(breedsService.getBreedByName("raca_invalida"));
     }
 }
